@@ -3,8 +3,13 @@ package giandev.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import giandev.test.generator.SimpleDisplayNameGenerator;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 
+//@DisplayName("Test untuk Calculator class")
+@DisplayNameGeneration(SimpleDisplayNameGenerator.class)
 public class CalculatorTest {
     private final Calculator calculator = new Calculator();
 
@@ -13,6 +18,7 @@ public class CalculatorTest {
      * test method Add dengan skenario success
      */
     @Test
+//    @DisplayName("Test skenario sukses untuk method add(integer, integer)")
     public void testAddSuccess() {
         Integer result = calculator.add(10, 10);
 
