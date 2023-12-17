@@ -4,15 +4,43 @@ package giandev.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import giandev.test.generator.SimpleDisplayNameGenerator;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 //@DisplayName("Test untuk Calculator class")
 @DisplayNameGeneration(SimpleDisplayNameGenerator.class)
 public class CalculatorTest {
     private final Calculator calculator = new Calculator();
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Before All");
+    }
+
+    /**
+     * Namun kadang kita ingin melakukan sesuatu sebelum semua unit test berjalan, atau setelah semua unit test berjalan
+     * Ini bisa dilakukan menggunakan annotation @BeforeAll dan @AfterAll
+     * Namun hanya static function yang bisa menggunakan @BeforeAll dan @AfterAll
+     */
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("After All");
+    }
+
+    /**
+     * BeforeEach digunakan untuk menandai function yang akan dieksekusi sebelum unit test dijalankan
+     */
+    @BeforeEach
+    public void setUp() {
+        System.out.println("Before Each");
+    }
+
+    /**
+     * AfterEach digunakan untuk menandai function yang akan dieksekusi sebelum unit test dijalankan
+     */
+    @AfterEach
+    public void tearDown() {
+        System.out.println("After Each");
+    }
 
     /**
      * konvensi penamaan
@@ -48,6 +76,6 @@ public class CalculatorTest {
     @Test
     @Disabled
     public void testCommingSoon() {
-        
+
     }
 }
