@@ -1,9 +1,7 @@
 package giandev.test;
 
 import giandev.test.resolver.RandomParameterResolver;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.Extensions;
 
@@ -21,6 +19,37 @@ import java.util.Random;
 public class RandomCalculatorTest extends AbstractCalculatorTest {
     @Test
     void testRandom(Random random, TestInfo info) {
+        var a = random.nextInt();
+        final var name = "gian";
+        var b = random.nextInt();
+
+        var result = calculator.add(a, b);
+        var expected = a + b;
+
+        Assertions.assertEquals(expected, result);
+    }
+
+    @RepeatedTest(
+            value = 10,
+            name = "{displayName} ke {currentRepetition} dari {totalRepetitions}"
+    )
+    @DisplayName("Test random calculator")
+    void testRandomRepeat(Random random, TestInfo info) {
+        var a = random.nextInt();
+        final var name = "gian";
+        var b = random.nextInt();
+
+        var result = calculator.add(a, b);
+        var expected = a + b;
+
+        Assertions.assertEquals(expected, result);
+    }
+
+
+    @RepeatedTest(value = 10, name = "{displayName}")
+    @DisplayName("Test random calculator")
+    void testRandomRepeatInfo(Random random, TestInfo info, RepetitionInfo repetitionInfo) {
+        System.out.println(info.getDisplayName() + " ke " + repetitionInfo.getCurrentRepetition() + " dari " + repetitionInfo.getTotalRepetitions());
         var a = random.nextInt();
         final var name = "gian";
         var b = random.nextInt();
