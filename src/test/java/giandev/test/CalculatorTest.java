@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import giandev.test.generator.SimpleDisplayNameGenerator;
 import org.junit.jupiter.api.*;
+import org.opentest4j.TestAbortedException;
 
 //@DisplayName("Test untuk Calculator class")
 @DisplayNameGeneration(SimpleDisplayNameGenerator.class)
@@ -77,5 +78,19 @@ public class CalculatorTest {
     @Disabled
     public void testCommingSoon() {
 
+    }
+
+    /**
+     * Kadang kita ingin membatalkan unit test ketika kondisi tertentu terjadi
+     * Untuk membatalkan, kita bisa menggunakan exception TestAbortedException
+     * Jika JUnit mendapatkan exception TestAbortedException, secara otomatis test tersebut akan dibatalkan
+     */
+    @Test
+    public void testAborted() {
+        var profile = System.getenv("PROFILE");
+
+        if (!"DEV".equals(profile)) {
+            throw new TestAbortedException("Test dibatalkan karena bukan DEV");
+        }
     }
 }
