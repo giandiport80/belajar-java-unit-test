@@ -4,6 +4,7 @@ package giandev.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import giandev.test.generator.SimpleDisplayNameGenerator;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
@@ -39,5 +40,14 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.divide(10, 0);
         });
+    }
+
+    /**
+     * menonaktifkan test dengan @Disabled
+     */
+    @Test
+    @Disabled
+    public void testCommingSoon() {
+        
     }
 }
