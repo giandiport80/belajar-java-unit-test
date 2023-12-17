@@ -2,6 +2,7 @@ package giandev.test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 import giandev.test.generator.SimpleDisplayNameGenerator;
 import org.junit.jupiter.api.*;
@@ -92,5 +93,18 @@ public class CalculatorTest {
         if (!"DEV".equals(profile)) {
             throw new TestAbortedException("Test dibatalkan karena bukan DEV");
         }
+    }
+
+    /**
+     * Sebelumnya kita sudah tahu jika ingin membatalkan test, kita bisa menggunakan exception TestAbortException
+     * Namun sebenarnya ada cara yang lebih mudah, yaitu dengan menggunakan Assumptions
+     * Penggunaan Assumptions mirip seperti Assertions, jika nilainya tidak sama, maka function
+     * Assumptions akan thrown TestAbortException, sehingga secara otomatis akan membatalkan unit test yang sedang berjalan
+     */
+    @Test
+    public void testAssumption() {
+        assumeTrue("DEV".equals(System.getenv("PROFILE")));
+
+        // unit test untuk dev
     }
 }
