@@ -17,12 +17,8 @@ import java.util.Random;
  * memasukkan parameter tersebut dengan bantuan ParameterResolver
  * Contohnya TestInfo yang kita bahas sebelumya, sebenarnya objectnya dibuat oleh TestInfoParameterResolver
  */
-@Extensions({
-        @ExtendWith(RandomParameterResolver.class)
-})
-public class RandomCalculatorTest {
-    private Calculator calculator = new Calculator();
 
+public class RandomCalculatorTest extends AbstractCalculatorTest {
     @Test
     void testRandom(Random random, TestInfo info) {
         var a = random.nextInt();
