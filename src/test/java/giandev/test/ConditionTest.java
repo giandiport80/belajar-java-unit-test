@@ -1,5 +1,7 @@
 package giandev.test;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
@@ -11,6 +13,9 @@ import java.util.Properties;
  * kondisi sistem operasi, versi java, system property atau environment variable
  * Ini lebih mudah dibandingkan menggunakan Assumptions
  */
+@Tags({
+        @Tag("integration-test")
+})
 public class ConditionTest {
 
     @Test
