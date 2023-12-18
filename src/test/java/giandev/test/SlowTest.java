@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Timeout;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Timeout di test
  * JUnit memiliki fitur timeout, yaitu memastikan bahwa unit test berjalan tidak lebih dari waktu yang ditentukan,
  * jika melebihi waktu yang ditentukan, secara otomatis unit test tersebut akan gagal
  * Kita bisa menggunakan annotation @Timeout untuk melakukan hal tersebut
